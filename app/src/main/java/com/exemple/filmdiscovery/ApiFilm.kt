@@ -7,11 +7,13 @@ import retrofit2.http.Query;
 
 // Interface de l'API
 interface ApiFilm {
-    // Spécifier l'URL finale de l'API
-    @GET("3/movie/{movie_id}?")
-    // Récupération du film
+    // Spécifier l'URL finale de l'API pour récupérer les films avec un genre spécifique
+
+    @GET("3/discover/movie?")
     fun getFilm(
-        @Path("movie_id") movie_id: Int,
-        @Query("api_key") api_key: String
-    ): Call<ModelFilm>
+        @Query("api_key") api_key: String,
+        @Query("with_genres") genreId: Int,
+        @Query("page") page: Int
+    ): Call<Films>
+
 }
